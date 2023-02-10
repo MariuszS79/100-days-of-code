@@ -27,3 +27,50 @@ scissors = '''
 ---.__(___)
 '''
 
+print ("Welcome to Rock Paper Scissors game")
+print(rock)
+print(paper)
+print(scissors)
+
+
+options = ["r", "p", "s"]
+win_count_human = 0
+win_count_computer = 0
+
+game = True
+while game:
+    print("--------------")
+    while True:
+        try:
+            choice = input("Choose (r)ock, (p)aper or (s)cissors: ")
+            if choice not in options:
+                raise ValueError 
+            break
+        except ValueError:
+            print("Invalid entry. Choose r for rock, p for paper or s for scissors.") 
+    computer = random.choice(options)
+
+    if (choice == "r" and computer == "p") or (choice == "p" and computer == "s") or (choice == "s" and computer == "r"):
+        print ("You chose",choice,"and computer chose",computer,"\nYou lose")
+        win_count_computer += 1
+    elif (choice == "p" and computer == "r") or (choice == "s" and computer == "p") or (choice == "r" and computer == "s"):
+        print("You chose",choice,"and computer chose",computer,"\nYou win") 
+        win_count_human += 1
+    elif (choice == "p" and computer == "p") or (choice == "s" and computer == "s") or (choice == "r" and computer == "r"):
+        print("You chose",choice,"and computer chose",computer,"\nIt's a draw") 
+    
+    print("\n")
+    print ("The score is ",win_count_human,"for you, and ",win_count_computer,"for computer")
+    while True:
+        try:
+            again = input("Play again? y/n: ")
+            if again != "y" and again != "n":
+                raise ValueError 
+            break
+        except ValueError:
+            print("Invalid entry. Type \"y\" or \"n\".") 
+
+    if again == "n":
+        game = False
+print ("\nTotal Score is",win_count_human,"for you and",win_count_computer,"for computer\nHave a nice day")
+
