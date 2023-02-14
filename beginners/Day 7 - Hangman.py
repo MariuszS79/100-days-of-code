@@ -1,14 +1,80 @@
 #Step 1 
 import random
 
-word_list = ['ability', 'absence', 'academy', 'account', 'accuse', 'achieve', 'acquire', 'address', 'advance', 'advice', 'affect', 'afford', 'against', 'airline', 'alcohol', 'allege', 'already', 'amazing', 'analyze', 'anger', 'animal', 'annual', 'answer', 'anxiety', 'apology', 'appoint', 'approve', 'argue', 'around', 'arrival', 'article', 'artist', 'aspect', 'assault', 'assert', 'assess', 'assign', 'assist', 'assume', 'athlete', 'attack', 'attempt', 'attract', 'auction', 'average', 'awesome', 'balance', 'barrier', 'beauty', 'believe', 'benefit', 'between', 'beyond', 'billion', 'biology', 'bishop', 'blanket', 'bottle', 'boundary', 'bravery', 'brother', 'builder', 'burden', 'butter', 'buyer', 'camera', 'campaign', 'capital', 'capture', 'carbon', 'careful', 'carrier', 'carve', 'casual', 'celebrate', 'center', 'ceremony', 'chance', 'change', 'channel', 'charge', 'charity', 'cheap', 'check', 'cheese', 'chef', 'choice', 'choose', 'church', 'climate', 'clinic', 'clothing', 'cluster', 'coastal', 'colony', 'combat', 'comfort', 'command', 'comment', 'compare', 'compete', 'complex', 'concept', 'concern', 'conduct', 'confirm', 'confront', 'congress', 'connect', 'consent', 'consult', 'consumer', 'contain', 'content', 'context', 'control', 'convert', 'cooking', 'corner', 'correct', 'costly', 'courage', 'cover', 'craft', 'crazy', 'create', 'credit', 'crime', 'crisis', 'critic', 'cross', 'crystal']
+stages = ['''
+  +---+
+  |   |
+  O   |
+ /|\  |
+ / \  |
+      |
+=========
+''', '''
+  +---+
+  |   |
+  O   |
+ /|\  |
+ /    |
+      |
+=========
+''', '''
+  +---+
+  |   |
+  O   |
+ /|\  |
+      |
+      |
+=========
+''', '''
+  +---+
+  |   |
+  O   |
+ /|   |
+      |
+      |
+=========''', '''
+  +---+
+  |   |
+  O   |
+  |   |
+      |
+      |
+=========
+''', '''
+  +---+
+  |   |
+  O   |
+      |
+      |
+      |
+=========
+''', '''
+  +---+
+  |   |
+      |
+      |
+      |
+      |
+=========
+''']
+
+word_list = ['aardvark', 'balloon', 'cactus', 'daffodil', 'elephant', 'frosty', 'giraffe', 'hippopotamus', 'igloo', 'jungle', 'kangaroo', 
+'lemur', 'mountain', 'nose', 'octopus', 'penguin', 'quilt', 'rhinoceros', 'squirrel', 'toucan', 'umbrella', 'vulture', 'walrus', 'xylophone', 
+'yak', 'zebra', 'apple', 'banana', 'carrot', 'doughnut', 'eggplant', 'fig', 'grape', 'honeydew', 'iceberg', 'jalapeno', 'kiwi', 'lemon', 
+'mango', 'nectarine', 'orange', 'peach', 'quince', 'raspberry', 'strawberry', 'tangerine', 'ugli', 'vanilla', 'watermelon', 'xigua', 
+'yellow', 'zucchini', 'alligator', 'bear', 'cougar', 'deer', 'elephant', 'flamingo', 'gorilla', 'hippopotamus', 'iguana', 'jaguar', 'koala', 
+'llama', 'mongoose', 'narwhal', 'opossum', 'panther', 'quokka', 'rhinoceros', 'sloth', 'tiger', 'urchin', 'vulture', 'walrus', 'xenops', 'yak', 
+'zebra', 'archer', 'baker', 'carpenter', 'doctor', 'electrician', 'firefighter', 'gardener', 'hairdresser', 'investigator', 'jeweler', 'knitter', 
+'lawyer', 'musician', 'nurse', 'optometrist', 'plumber', 'quilter', 'receptionist', 'surgeon', 'teacher', 'university', 'veterinarian', 
+'writer', 'x-ray', 'yoga', 'zoologist']
+
 
 chosen_word = random.choice(word_list)
-print(chosen_word)
 display = []
 for letter in chosen_word:
         display.append("_")
 
+lives = 6
 game = True
 
 while game:
@@ -29,5 +95,23 @@ while game:
     else: 
         game = False
 
-#TODO-1: - Use a while loop to let the user guess again. The loop should only stop once the user has guessed 
-# all the letters in the chosen_word and 'display' has no more blanks ("_"). Then you can tell the user they've won.
+    if guess not in chosen_word:
+        lives -= 1
+        if lives <=0:
+            print ("You lose")
+            game = False
+
+    if lives == 6:
+        print (stages[6])
+    elif lives == 5:
+        print (stages[5])
+    elif lives == 4:
+        print (stages[4])
+    elif lives == 3:
+        print (stages[3])
+    elif lives == 2:
+        print (stages[2])
+    elif lives == 1:
+        print (stages[1])
+    elif lives == 0:
+        print (stages[0])
