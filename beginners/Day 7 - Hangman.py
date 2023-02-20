@@ -32,7 +32,8 @@ stages = ['''
  /|   |
       |
       |
-=========''', '''
+=========
+''', '''
   +---+
   |   |
   O   |
@@ -100,15 +101,12 @@ while play_again:
         guess = input("\nguess a letter: ").lower()   
         
         if guess in chosen_word:
-            print("Right")
             for i in range(len(chosen_word)):
                 if guess == chosen_word[i]:
                     display[i] = guess         
-        else:
-            print("Wrong")
+  
 
        
-
         if "_" in display:
             game = True
         else: 
@@ -117,11 +115,14 @@ while play_again:
         if guess not in chosen_word:
             lives -= 1
             if lives <=0:
-                print ("You lose")
                 game = False
         os.system('clear')
 
-
+    if game == False:
+        if lives ==0:
+            print("You lost!", chosen_word.upper(),"was the word")
+        else: 
+            print("You win!")
     again = input("would you like to play again? y/n: ")
     if again != "y":
         play_again = False
